@@ -49,12 +49,12 @@ class syntax_plugin_acronym4glossary extends DokuWiki_Syntax_Plugin {
         $this->Lexer->addSpecialPattern('<GLOSSARY>',$mode,'plugin_acronym4glossary');
     }
 
-		function handle($match, $state, $pos, &$handler){
+		function handle($match, $state, $pos, Doku_Handler $handler){
 			$this->acrData = getAcronyms();
 			return $data;
     }
 
-		function render($mode, &$renderer, $data) {
+		function render($mode, Doku_Renderer $renderer, $data) {
 			if($mode != 'xhtml') return false;
 			$renderer->doc .= "<ul>\n";
 			$actLetter = "a";
